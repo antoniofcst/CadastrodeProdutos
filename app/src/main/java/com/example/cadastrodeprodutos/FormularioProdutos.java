@@ -24,6 +24,7 @@ public class FormularioProdutos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_produtos);
 
+        produto = new Produtos();
         bdHelper = new ProdutosBd(FormularioProdutos.this);
 
 
@@ -38,6 +39,14 @@ public class FormularioProdutos extends AppCompatActivity {
 
         if (editarProduto != null) {
             btn_poliform.setText("Modificar");
+
+            editTextNomeProduto.setText(editarProduto.getNomeProduto());
+            editTextdescricaoProduto.setText(editarProduto.getDescricaoProduto());
+            editTextquantidade.setText(editarProduto.getQuantidade()+ "");
+
+            produto.setId(editarProduto.getId());
+
+
         } else {
             btn_poliform.setText("Cadastrar");
         }

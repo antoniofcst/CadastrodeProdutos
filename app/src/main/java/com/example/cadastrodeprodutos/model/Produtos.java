@@ -1,10 +1,17 @@
 package com.example.cadastrodeprodutos.model;
 
-public class Produtos {
+import java.io.Serializable;
+
+public class Produtos implements Serializable  {
     private Long id;
     private String nomeProduto;
     private String DescricaoProduto;
     private int quantidade;
+
+    @Override
+    public String toString () {
+        return nomeProduto.toString();
+    }
 
     public Long getId() {
         return id;
