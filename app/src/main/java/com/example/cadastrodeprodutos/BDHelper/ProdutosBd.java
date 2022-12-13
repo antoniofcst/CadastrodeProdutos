@@ -42,6 +42,22 @@ public class ProdutosBd extends SQLiteOpenHelper {
         getWritableDatabase().insert("produtos", null, values);
     }
 
+    public void alterarProduto(Produtos produto) {
+        ContentValues values = new ContentValues();
+
+        values.put("nomeproduto", produto.getNomeProduto());
+        values.put("descricao", produto.getDescricaoProduto());
+        values.put("quantidade", produto.getQuantidade());
+
+        String [] args = {produto.getId().toString()};
+        getWritableDatabase().update("produtos", values, "id=?", args);
+    }
+
+    public void deletarProduto(Produtos produto) {
+        String [] args = {produto.getId().toString()};
+        getWritableDatabase().delete("produtos", "id=?", args);
+    }
+
     public ArrayList<Produtos> getLista() {
         String [] columns = {"id", "nomeproduto", "descricao", "quantidade"};
         Cursor cursor = getWritableDatabase().query("produtos", columns, null, null, null, null, null , null);
